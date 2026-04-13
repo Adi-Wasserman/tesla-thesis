@@ -28,7 +28,7 @@ export function FsdMiles() {
           Tesla&rsquo;s data moat
         </div>
         <div className="text-[11px] leading-snug" style={{ color: "#94a3b8" }}>
-          87M+ miles driven per day across the global fleet. Waymo logs ~70K/day. This 1,200x data
+          19M+ miles driven per day across the global fleet. Waymo logs ~70K/day. This ~270x data
           advantage trains the AI powering the robotaxi network.
         </div>
       </div>
