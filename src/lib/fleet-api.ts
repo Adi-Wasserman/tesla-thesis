@@ -20,12 +20,15 @@ export function useFleetPolling(): FleetApiResult {
       .then((j: { fleet?: FleetStatus }) => {
         const f = j.fleet;
         if (f && f.totalFleetCount) {
+          const austin = f.austinCount || null;
+          const bayArea = f.bayAreaCount || null;
+          const cityTotal = austin != null && bayArea != null ? austin + bayArea : null;
           setFs({
-            totalFleetCount: f.totalFleetCount,
+            totalFleetCount: cityTotal ?? f.totalFleetCount,
             cybercabCount: f.cybercabCount || 0,
             unsupervisedCount: f.unsupervisedCount || 0,
-            austinCount: f.austinCount || null,
-            bayAreaCount: f.bayAreaCount || null,
+            austinCount: austin,
+            bayAreaCount: bayArea,
           });
           setLu(
             new Date().toLocaleTimeString("en-US", {
