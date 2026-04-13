@@ -12,5 +12,5 @@ export const FGD: FleetGrowthPoint[] = [
   { austin: 72, bayArea: 210, label: "Feb" },
   { austin: 80, bayArea: 270, label: "Late Feb", ms: "350+" },
   { austin: 88, bayArea: 330, label: "Mar" },
-  { austin: 89, bayArea: 341, label: "Now", ms: "430" },
+  { austin: 94, bayArea: 479, label: "Now", ms: "573" },
 ];
