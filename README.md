@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The Tesla Robotaxi Thesis
 
-## Getting Started
+Interactive investment thesis dashboard tracking Tesla's transition from car company to mobility platform.
 
-First, run the development server:
+**Live:** [tesla-thesis.vercel.app](https://tesla-thesis.vercel.app)
+
+## Sections
+
+- **The Case** — Revenue and profit projections through 2030, fleet-to-revenue model, unit economics, risk analysis, and ARK Invest comparison
+- **Live Tracker** — Real-time fleet count via robotaxitracker.com, fleet growth chart, Cybercab specs, D3 expansion map, and hiring tracker
+- **The Numbers** — Tesla financials from SEC filings (Q4 2020 – Q4 2025): margins, revenue by segment, cash flow, energy storage, and more
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript (strict)
+- **Styling:** Tailwind CSS v4
+- **Charts:** Recharts v3
+- **Maps:** D3.js + TopoJSON
+- **Deployment:** Vercel
+
+## Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Data Sources
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Fleet data: [robotaxitracker.com](https://robotaxitracker.com) via [robotaxi-proxy.vercel.app](https://robotaxi-proxy.vercel.app/api/fleet)
+- Financials: SEC 8-K/10-K filings (GAAP)
+- Projections: Wolfe Research, ARK Invest, S&P Global
