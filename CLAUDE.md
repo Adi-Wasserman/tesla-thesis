@@ -31,6 +31,7 @@
 - **Fleet milestones:** `src/data/fleet-growth.ts`
 - **FSD miles:** `src/components/sections/tracker/fsd-miles.tsx` (manual, from tesla.com/fsd/safety)
 - **New cities:** `src/data/cities.ts`
+- **Hiring data:** `src/data/careers.ts` (manual, from tesla.com/careers/search/?query=robotaxi)
 
 ## Key Patterns
 
