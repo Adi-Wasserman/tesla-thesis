@@ -90,7 +90,7 @@ export function ProgramSection({ fs, lastUpdated, live }: ProgramSectionProps) {
       <SectionHeader
         icon={"\uD83D\uDCCB"}
         title="How We Know It's Real"
-        sub="50+ active job postings across 20 countries reveal the scaling roadmap"
+        sub="99+ active job postings across 20+ countries reveal the scaling roadmap"
         color="#34d399"
       />
 
