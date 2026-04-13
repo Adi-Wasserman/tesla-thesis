@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "The Tesla Robotaxi Thesis",
-  description: "From Car Company to Mobility Platform",
+  description: "From Car Company to Mobility Platform — Interactive investment thesis dashboard",
 };
 
 export default function RootLayout({
