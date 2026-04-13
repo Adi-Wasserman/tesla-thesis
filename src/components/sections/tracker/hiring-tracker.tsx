@@ -2,17 +2,15 @@
 
 import { GlassCard } from "@/components/ui/glass-card";
 import { Panel } from "@/components/ui/panel";
-import { useCareersPolling } from "@/lib/careers-api";
+import { FALLBACK_CAREERS } from "@/data/careers";
 
 export function HiringTracker() {
-  const { careers, live, loading } = useCareersPolling();
+  const careers = FALLBACK_CAREERS;
 
   const lastFetched = careers.fetchedAt
     ? new Date(careers.fetchedAt).toLocaleDateString("en-US", {
         month: "short",
         day: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
       })
     : null;
 
@@ -25,89 +23,47 @@ export function HiringTracker() {
         <GlassCard small label="Operations" value={careers.operations} color="#f97316" />
       </div>
 
-      <Panel
-        title="Open Positions by Category"
-        sub={
-          live
-            ? "Live from tesla.com/careers"
-            : "From tesla.com/careers"
-        }
-        accent="rgba(52,211,153,0.25)"
-      >
-        {loading ? (
-          <div className="flex items-center justify-center py-6">
+      <Panel title="Open Positions by Category" sub="From tesla.com/careers" accent="rgba(52,211,153,0.25)">
+        <div className="flex flex-col gap-2">
+          {careers.categories.map((h, i) => (
             <div
-              className="w-4 h-4 rounded-full border-2 animate-spin"
+              key={i}
+              className="rounded-[10px]"
               style={{
-                borderColor: "rgba(52,211,153,0.2)",
-                borderTopColor: "#34d399",
+                padding: "10px 12px",
+                background: "rgba(0,0,0,0.2)",
+                border: "1px solid rgba(52,211,153,0.06)",
               }}
-            />
-            <span className="ml-2 text-[11px]" style={{ color: "#94a3b8" }}>
-              Checking tesla.com/careers...
-            </span>
-          </div>
-        ) : (
-          <div className="flex flex-col gap-2">
-            {careers.categories.map((h, i) => (
-              <div
-                key={i}
-                className="rounded-[10px]"
-                style={{
-                  padding: "10px 12px",
-                  background: "rgba(0,0,0,0.2)",
-                  border: "1px solid rgba(52,211,153,0.06)",
-                }}
-              >
-                <div className="flex items-center gap-2 mb-0.5">
-                  <span className="text-xs font-bold" style={{ color: "#e2e8f0" }}>
-                    {h.cat}
-                  </span>
-                  <span
-                    className="text-[11px] font-extrabold"
-                    style={{ color: "#34d399" }}
-                  >
-                    {h.count}
-                  </span>
-                </div>
-                <div
-                  className="text-[10px] leading-snug"
-                  style={{ color: "#94a3b8" }}
-                >
-                  <span className="font-semibold" style={{ color: "#64748b" }}>
-                    Roles:{" "}
-                  </span>
-                  {h.roles}
-                </div>
-                <div className="text-[10px]" style={{ color: "#94a3b8" }}>
-                  <span className="font-semibold" style={{ color: "#64748b" }}>
-                    Locations:{" "}
-                  </span>
-                  {h.locs}
-                </div>
+            >
+              <div className="flex items-center gap-2 mb-0.5">
+                <span className="text-xs font-bold" style={{ color: "#e2e8f0" }}>
+                  {h.cat}
+                </span>
+                <span className="text-[11px] font-extrabold" style={{ color: "#34d399" }}>
+                  {h.count}
+                </span>
               </div>
-            ))}
-          </div>
-        )}
+              <div className="text-[10px] leading-snug" style={{ color: "#94a3b8" }}>
+                <span className="font-semibold" style={{ color: "#64748b" }}>
+                  Roles:{" "}
+                </span>
+                {h.roles}
+              </div>
+              <div className="text-[10px]" style={{ color: "#94a3b8" }}>
+                <span className="font-semibold" style={{ color: "#64748b" }}>
+                  Locations:{" "}
+                </span>
+                {h.locs}
+              </div>
+            </div>
+          ))}
+        </div>
         <div
           className="mt-2.5 flex justify-between items-center"
-          style={{
-            padding: "8px 12px",
-            borderTop: "1px solid rgba(52,211,153,0.08)",
-          }}
+          style={{ padding: "8px 12px", borderTop: "1px solid rgba(52,211,153,0.08)" }}
         >
           <span className="text-[9px]" style={{ color: "#64748b" }}>
-            {live && lastFetched ? (
-              <>
-                <span
-                  className="inline-block w-1.5 h-1.5 rounded-full mr-1"
-                  style={{ background: "#34d399", verticalAlign: "middle" }}
-                />
-                Live &middot; {lastFetched}
-              </>
-            ) : (
-              "Updated daily"
-            )}
+            {lastFetched ? `Updated ${lastFetched}` : "Updated daily"}
           </span>
           <a
             href="https://www.tesla.com/careers/search/?query=robotaxi"
