@@ -20,7 +20,9 @@ jobs:
           node-version: "24"
 
       - name: Install Playwright
-        run: npx playwright install chromium
+        run: |
+          npm install playwright
+          npx playwright install chromium
 
       - name: Scrape Tesla careers
         run: node .github/scripts/scrape-careers.mjs
