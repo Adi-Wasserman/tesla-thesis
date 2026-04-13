@@ -20,7 +20,7 @@ export function FsdMiles() {
           className="text-[32px] font-black leading-tight"
           style={{ color: "#00f0ff", textShadow: "0 0 20px rgba(0,240,255,0.2)" }}
         >
-          ~9B
+          ~9.50B
         </div>
       </div>
       <div className="flex-1 min-w-[160px] ml-2">
