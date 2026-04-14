@@ -31,11 +31,19 @@
 - **Fleet milestones:** `src/data/fleet-growth.ts`
 - **FSD miles:** `src/components/sections/tracker/fsd-miles.tsx` (manual, from tesla.com/fsd/safety)
 - **New cities:** `src/data/cities.ts`
-- **Hiring data:** `src/data/careers.ts` (manual, from tesla.com/careers/search/?query=robotaxi)
+- **Hiring data:** `src/data/careers.ts` (web search for Tesla robotaxi/self-driving jobs, then update file)
 
 ## Key Patterns
 
 - Fleet total derived from Austin + Bay Area counts, not API's `totalFleetCount`
+- City counts derived from `service_area_id` on each vehicle in the Convex response
 - Fleet polling: `src/lib/fleet-api.ts` (2-min interval from robotaxi-proxy.vercel.app)
+- Proxy repo: `~/robotaxi-proxy` → deploys to robotaxi-proxy.vercel.app
+- Cybercab count from API is cumulative (all ever spotted), not filtered to active — label says "spotted"
 - Financial chart sync: `syncId="f"` | Thesis chart sync: `syncId="th"`
 - Theme palette: CSS custom properties in `src/app/globals.css`
+
+## Known Limitations
+
+- Tesla careers page (tesla.com) is behind Akamai WAF — blocks all cloud/datacenter IPs (Vercel, GitHub Actions, direct fetch). Hiring data is updated via web search instead.
+- Cybercab count from Convex API (`cybercabCount`) is cumulative; robotaxitracker.com filters to active only. No filtered query is available.
