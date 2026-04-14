@@ -43,7 +43,7 @@ export function FleetStatusCards({ fs, lastUpdated, live }: FleetStatusProps) {
           sub={live ? "robotaxitracker.com" : "cached"}
           color="#00f0ff"
         />
-        <GlassCard label="Cybercabs" value={s.cybercabCount} sub="test vehicles" color="#f97316" />
+        <GlassCard label="Cybercabs" value={s.cybercabCount} sub="spotted" color="#f97316" />
         <GlassCard label="Unsupervised" value={s.unsupervisedCount} sub="no safety monitor" color="#a855f7" />
       </div>
     </>
